@@ -1,6 +1,9 @@
 package com.nitin.qa.sampleProject.framework;
 
+import java.io.File;
+
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.Reporter;
@@ -17,10 +20,13 @@ public class ProjectTestCase {
 	@BeforeMethod
 	public void setUp() throws Exception{
 
-		System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir") + "/src/test/resources/geckodriver");
+//		System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir") + "/src/test/resources/geckodriver");
+		
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+File.separator+"src"+File.separator+"test"+File.separator+"resources"+File.separator+"chromedriver");
 		
 		if(driver == null){
-			driver = new FirefoxDriver();
+//			driver = new FirefoxDriver();
+			driver = new ChromeDriver();
 			driver.manage().window().maximize();
 		}
 		driver.get(Config.LOGIN_URL);
